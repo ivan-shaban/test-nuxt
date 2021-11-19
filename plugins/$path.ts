@@ -4,6 +4,29 @@ import { Plugin } from '@nuxt/types'
 
 // prettier-ignore
 export const pagesPath = {
+  calculators: {
+    investing: {
+      $url: (url?: { hash?: string }) => ({ path: '/calculators/investing', hash: url?.hash })
+    }
+  },
+  calendars: {
+    personal: {
+      add: {
+        $url: (url?: { hash?: string }) => ({ path: '/calendars/personal/add', hash: url?.hash })
+      }
+    }
+  },
+  info: {
+    funds_withdrawal: {
+      $url: (url?: { hash?: string }) => ({ path: '/info/funds_withdrawal', hash: url?.hash })
+    },
+    telegram_kanaly: {
+      $url: (url?: { hash?: string }) => ({ path: '/info/telegram_kanaly', hash: url?.hash })
+    },
+    wallet_replenishment: {
+      $url: (url?: { hash?: string }) => ({ path: '/info/wallet_replenishment', hash: url?.hash })
+    }
+  },
   $url: (url?: { hash?: string }) => ({ path: '/', hash: url?.hash })
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <Header />
-    <main class="main">
+    <main class="main bg-purple-50">
       <div class="container">
         <div class="row">
           <div class="col-md-12">

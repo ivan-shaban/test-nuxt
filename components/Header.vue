@@ -1,97 +1,64 @@
 <template>
-  <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light" data-toggle="affix">
-      <div class="container-fluid">
+  <header>
+    <nav class="flex items-center justify-between flex-wrap bg-purple-900 p-2">
+      <div class="block lg:hidden">
         <button
-          class="navbar-toggler navbar-toggler-right collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          class="flex items-center px-3 py-2 border rounded text-blue-100 border-teal-400 hover:text-white hover:border-white"
         >
-          <span class="navbar-toggler-icon" />
+          <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
         </button>
-        <div id="navbarResponsive" class="collapse navbar-collapse">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <NuxtLink to="$pagesPath.table.$url()">
-                <a class="nav-link smooth-scroll whiteLink">Общая статистика</a>
-              </NuxtLink>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                id="calendarDropdownMenuLink"
-                class="nav-link dropdown-toggle smooth-scroll whiteLink"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Календари
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="calendarDropdownMenuLink">
-                <NuxtLink to="$pagesPath.calendars.personal.add.$url()">
-                  <a class="dropdown-item">Личный</a>
-                </NuxtLink>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                id="calculatorsDropdownMenuLink"
-                class="nav-link dropdown-toggle smooth-scroll whiteLink"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Калькуляторы
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <NuxtLink to="$pagesPath.calculators.investing.$url()">
-                  <a class="dropdown-item">Инвестиционный калькулятор</a>
-                </NuxtLink>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                id="generalInfoDropdownMenuLink"
-                class="nav-link dropdown-toggle smooth-scroll whiteLink"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Полезная информация
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <NuxtLink to="$pagesPath.info.wallet_replenishment.$url()">
-                  <a class="dropdown-item">Пополнение кошелька FINSTORE</a>
-                </NuxtLink>
-                <NuxtLink to="$pagesPath.info.funds_withdrawal.$url()">
-                  <a class="dropdown-item">Вывод средств из FINSTORE</a>
-                </NuxtLink>
-                <NuxtLink to="$pagesPath.info.telegram_kanaly.$url()">
-                  <a class="dropdown-item">Telegram-каналы</a>
-                </NuxtLink>
-              </div>
-            </li>
-          </ul>
+      </div>
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div
+          class="relative block px-4 py-2 text-white rounded-lg cursor-pointer hover:bg-indigo-500"
+        >
+          <NuxtLink :to="$pagesPath.$url()" class="text-sm">Общая статистика</NuxtLink>
         </div>
-        <button type="button" class="btn btn-outline-light d-flex" @onClick="login">
-          Войти
-        </button>
+        <Dropdown title="Календари" :content="calendars" />
+        <Dropdown title="Калькуляторы" :content="calculators" />
+        <Dropdown title="Полезная информация" :content="usefulInfo" />
+        <div>
+          <a
+            href="#"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-purple-900 hover:bg-white mt-4 lg:mt-0"
+          >Download</a>
+        </div>
       </div>
     </nav>
   </header>
 </template>
 
 <script lang="ts">
+import Dropdown from '~/components/Dropdown.vue'
+import { pagesPath } from '~/plugins/$path'
+
 export default {
+  components: { Dropdown },
+  data () {
+    return {
+      generalStat: [],
+      calendars: [{
+        link: pagesPath.calendars.personal.add.$url(),
+        title: 'Личный'
+      }],
+      calculators: [{
+        link: pagesPath.calculators.investing.$url(),
+        title: 'Инвестиционный калькулятор'
+      }],
+      usefulInfo: [{
+        link: pagesPath.info.wallet_replenishment.$url(),
+        title: 'Пополнение кошелька FINSTORE'
+      }, {
+        link: pagesPath.info.funds_withdrawal.$url(),
+        title: 'Вывод средств из FINSTORE'
+      }, {
+        link: pagesPath.info.telegram_kanaly.$url(),
+        title: 'Telegram-каналы'
+      }]
+    }
+  },
   methods: {
     login () {
       console.log('>>  click on login button!')
@@ -99,13 +66,3 @@ export default {
   }
 }
 </script>
-<style>
-.header {
-  background: blueviolet;
-}
-
-.whiteLink {
-  color: white !important;
-}
-
-</style>
