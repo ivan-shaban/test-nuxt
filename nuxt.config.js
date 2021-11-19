@@ -22,7 +22,9 @@ export default {
     '~/plugins/$path',
     '~/plugins/directives'
   ],
-
+  router: {
+    middleware: ['auth']
+  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -40,12 +42,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+  auth: {
+    strategies: {
+      google: {
+        clientId: process.env.GOOGLE_ID
+      }
+    }
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

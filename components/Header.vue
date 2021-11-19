@@ -14,7 +14,9 @@
         <div
           class="relative block px-4 py-2 text-white rounded-lg cursor-pointer hover:bg-indigo-500"
         >
-          <NuxtLink :to="$pagesPath.$url()" class="text-sm">Общая статистика</NuxtLink>
+          <NuxtLink :to="$pagesPath.$url()" class="text-sm">
+            Общая статистика
+          </NuxtLink>
         </div>
         <Dropdown title="Календари" :content="calendars" />
         <Dropdown title="Калькуляторы" :content="calculators" />
@@ -23,7 +25,8 @@
           <a
             href="#"
             class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-purple-900 hover:bg-white mt-4 lg:mt-0"
-          >Download</a>
+            @click="login"
+          >Войти</a>
         </div>
       </div>
     </nav>
@@ -60,8 +63,13 @@ export default Vue.extend({
       }]
     }
   },
+  mounted () {
+    console.log(`>> logout`);
+    this.$auth.logout()
+  },
   methods: {
     login () {
+      this.$auth.loginWith('google')
       console.log('>>  click on login button!')
     }
   }

@@ -27,6 +27,9 @@ export const pagesPath = {
       $url: (url?: { hash?: string }) => ({ path: '/info/wallet_replenishment', hash: url?.hash })
     }
   },
+  login: {
+    $url: (url?: { hash?: string }) => ({ path: '/login', hash: url?.hash })
+  },
   $url: (url?: { hash?: string }) => ({ path: '/', hash: url?.hash })
 }
 
