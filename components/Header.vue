@@ -31,10 +31,11 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import Dropdown from '~/components/Dropdown.vue'
 import { pagesPath } from '~/plugins/$path'
 
-export default {
+export default Vue.extend({
   components: { Dropdown },
   data () {
     return {
@@ -64,5 +65,5 @@ export default {
       console.log('>>  click on login button!')
     }
   }
-}
+})
 </script>
