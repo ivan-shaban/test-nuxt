@@ -64,12 +64,14 @@ export default Vue.extend({
     }
   },
   mounted () {
-    console.log(`>> logout`);
-    this.$auth.logout()
+    // eslint-disable-next-line no-console
+    console.log('>> logout')
+    // this.$auth.logout()
   },
   methods: {
     login () {
-      this.$auth.loginWith('google')
+      // this.$auth.loginWith('google')
+      // eslint-disable-next-line no-console
       console.log('>>  click on login button!')
     }
   }
