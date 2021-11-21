@@ -16,6 +16,11 @@ export const pagesPath = {
       }
     }
   },
+  emitents: {
+    _code: (code?: string | number) => ({
+      $url: (url?: { hash?: string }) => ({ path: `/emitents${code !== undefined ? `/${code}` : ''}`, hash: url?.hash })
+    })
+  },
   info: {
     funds_withdrawal: {
       $url: (url?: { hash?: string }) => ({ path: '/info/funds_withdrawal', hash: url?.hash })
