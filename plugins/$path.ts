@@ -35,6 +35,9 @@ export const pagesPath = {
   login: {
     $url: (url?: { hash?: string }) => ({ path: '/login', hash: url?.hash })
   },
+  table: {
+    $url: (url?: { hash?: string }) => ({ path: '/table', hash: url?.hash })
+  },
   $url: (url?: { hash?: string }) => ({ path: '/', hash: url?.hash })
 }
 
