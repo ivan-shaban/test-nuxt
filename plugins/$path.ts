@@ -16,6 +16,11 @@ export const pagesPath = {
       }
     }
   },
+  emitents: {
+    _code: (code?: string | number) => ({
+      $url: (url?: { hash?: string }) => ({ path: `/emitents${code !== undefined ? `/${code}` : ''}`, hash: url?.hash })
+    })
+  },
   info: {
     funds_withdrawal: {
       $url: (url?: { hash?: string }) => ({ path: '/info/funds_withdrawal', hash: url?.hash })
@@ -26,6 +31,12 @@ export const pagesPath = {
     wallet_replenishment: {
       $url: (url?: { hash?: string }) => ({ path: '/info/wallet_replenishment', hash: url?.hash })
     }
+  },
+  login: {
+    $url: (url?: { hash?: string }) => ({ path: '/login', hash: url?.hash })
+  },
+  table: {
+    $url: (url?: { hash?: string }) => ({ path: '/table', hash: url?.hash })
   },
   $url: (url?: { hash?: string }) => ({ path: '/', hash: url?.hash })
 }
