@@ -91,17 +91,16 @@
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Vue
-} from 'vue-property-decorator'
+import Vue from 'vue'
 
-@Component
-export default class NavBar extends Vue {
-  get isLoggedIn () {
-    return this.$store.getters['user/isLoggedIn']
+export default Vue.extend({
+  name: 'NavBar',
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters['user/isLoggedIn']
+    }
   }
-}
+})
 </script>
 
 <style scoped>
