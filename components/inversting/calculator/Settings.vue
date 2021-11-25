@@ -233,8 +233,8 @@
             id="dropdownReplenishmentPeriod"
             :value="replenishmentPeriod"
             class="form-select form-select-sm"
-            @change="updateReinvestingPeriodByUI"
-            @input="updateReinvestingPeriodByUI"
+            @change="updateReplenishmentPeriodByUI"
+            @input="updateReplenishmentPeriodByUI"
           >
             <option value="0">
               нет
